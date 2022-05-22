@@ -110,18 +110,20 @@ def modificar_contato():
 
 def excluir_contato():
     aviso = '''
-            \nAtenção !!!
+                    \nAtenção !!!
         Esta operação não pode ser revertida!!!\n
     '''
     listar_contatos()
     agenda = Agenda('agenda.db')
     print(aviso)
-    opcao = input('Deseja conitnuar?[S/N]: ').upper()
+    opcao = input('Deseja continuar?[S/N]: ').upper()
     if opcao == 'S':
         identificador = validador_id()
         agenda.excluir(identificador)
+        agenda.fechar()
         return None
     else:
+        agenda.fechar()
         return None
         
 def main():
